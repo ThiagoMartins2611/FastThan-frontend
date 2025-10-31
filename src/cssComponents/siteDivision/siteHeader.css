@@ -1,0 +1,106 @@
+header {
+    
+    align-items:center;
+    background-color:#6FC2F2;
+    box-shadow:0 2px 4px rgba(0, 0, 0, 0.1);
+    color:white;
+    display:flex;
+    height:20%;
+    justify-content:space-between;
+    width:100%;
+
+}
+
+nav ul {
+
+    list-style:none;
+    padding-left:10px;
+    margin:0;
+    display:flex;
+    gap:10px;
+
+}
+
+nav ul li {
+
+}
+
+nav ul li a {
+    text-decoration: none; /* Remove o sublinhado dos links */
+    color: white;
+    font-weight: bold;
+
+    transition: color 0.3s ease; /* Transição suave para o efeito hover */
+}
+
+nav ul li a:hover {
+    color: #00bcd4; /* Cor de destaque ao passar o mouse */
+}
+
+/* --- Estilos da Divisão de Perfil (#perfil) --- */
+#perfil {
+    position: relative; /* Essencial para posicionar a lista suspensa */
+    cursor: pointer;
+    width: 40px; /* Exemplo de tamanho, ajuste conforme o ícone/imagem */
+    height: 40px;
+    background-color: white; /* Cor de fundo para o "botão" de perfil */
+    border-radius: 50%; /* Transforma em círculo (se for usar uma imagem de perfil) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    user-select: none; /* Impede a seleção de texto ao clicar */
+    transition: background-color 0.3s ease;
+    margin: 10px;
+}
+
+#perfil:hover {
+    background-color: #00bcd4;
+}
+
+
+/* --- Estilos da Lista de Perfil Suspensa (#listaPerfil) --- */
+#listaPerfil {
+    position: absolute;
+    top: 50px; /* Desloca abaixo do botão #perfil. Ajuste conforme a altura do header. */
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 200px; /* Largura da lista suspensa */
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #333; /* Cor do texto dentro da lista */
+    /* A visibilidade é controlada pelo React ({perfilAtivado && ...}) */
+}
+
+.itemPerfil {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9em;
+}
+
+.itemPerfil:last-child {
+    border-bottom: none;
+}
+
+/* Estilos específicos para os itens (apenas para visualização) */
+#nomeUsuario::before {
+    content: 'Nome de Usuário: ';
+    font-weight: bold;
+    display: inline;
+}
+
+#tipoUsuario::before {
+    content: 'Tipo: ';
+    font-weight: bold;
+    display: inline;
+}
+
+.itemPerfil:hover {
+    background-color: #f4f4f4;
+    cursor: pointer;
+}

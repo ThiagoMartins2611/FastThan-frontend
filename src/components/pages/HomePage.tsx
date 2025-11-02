@@ -7,8 +7,13 @@ function HomePage(){
 
     return(<>
 
+        <SiteHeader/>
+
+            <main>
+
+            </main>
       
-    
+        <SiteFooter/>
     </>)
 
 }

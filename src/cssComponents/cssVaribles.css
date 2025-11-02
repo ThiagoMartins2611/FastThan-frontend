@@ -1,0 +1,37 @@
+:root {
+  /* 🎨 Cores Primárias e de Ação */
+  --cor-primaria: #FF8C00; /* Laranja Escuro: Energia, atenção, Call-to-Action (CTA) principal */
+  --cor-secundaria: #007bff; /* Azul Brilhante: Confiança, links, botões secundários */
+  --cor-acento: #4CAF50; /* Verde: Sucesso, confirmação, "Entregue" */
+
+  /* ⚪ ⚫ Cores Neutras (Fundo, Texto e Bordas) */
+  --cor-fundo-claro: #f8f9fa; /* Branco Off-White: Fundo principal */
+  --cor-fundo-escuro: #212529; /* Preto Quase Escuro: Fundo para seções escuras (se houver) */
+  --cor-texto-principal: #343a40; /* Cinza Escuro: Texto principal */
+  --cor-texto-secundario: #6c757d; /* Cinza Médio: Texto auxiliar, legendas */
+  --cor-borda: #dee2e6; /* Cinza Claro: Bordas, divisores */
+  --cor-branco: #ffffff; /* Branco Puro: Texto sobre fundo escuro */
+
+  /* 🔔 Cores de Status e Feedback */
+  --cor-sucesso: var(--cor-acento); /* Verde: Sucesso, entrega completa */
+  --cor-aviso: #ffc107; /* Amarelo: Alerta, pendente */
+  --cor-erro: #dc3545; /* Vermelho: Erro, atenção imediata */
+}
+
+/* 📋 Exemplos de Uso */
+.cabecalho {
+  background-color: var(--cor-fundo-claro);
+  color: var(--cor-texto-principal);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.botao-principal {
+  background-color: var(--cor-primaria);
+  color: var(--cor-branco);
+  border: none;
+}
+
+.status-entregue {
+  color: var(--cor-sucesso);
+  font-weight: bold;
+}

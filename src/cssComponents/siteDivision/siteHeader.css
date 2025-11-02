@@ -1,50 +1,56 @@
 header {
-    
-    align-items:center;
-    background-color:#6FC2F2;
-    box-shadow:0 2px 4px rgba(0, 0, 0, 0.1);
-    color:white;
-    display:flex;
-    height:20%;
-    justify-content:space-between;
-    width:100%;
+    /* Cores */
+    background-color: var(--cor-secundaria); /* Substitui #6FC2F2 (similar a Azul Brilhante) */
+    color: var(--cor-branco); /* Substitui white */
 
+    /* Layout e Efeitos */
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Mantido, boa prática */
+    display: flex;
+    height: 20%; /* Ajuste a altura conforme necessário (ex: 60px para um valor fixo) */
+    justify-content: space-between;
+    width: 100%;
 }
 
 nav ul {
-
-    list-style:none;
-    padding-left:10px;
-    margin:0;
-    display:flex;
-    gap:10px;
-
+    list-style: none;
+    padding-left: 10px;
+    margin: 0;
+    display: flex;
+    gap: 10px;
 }
 
+/* nav ul li não precisa de estilo se não tiver algo específico */
 nav ul li {
 
 }
 
 nav ul li a {
+    /* Cores */
     text-decoration: none; /* Remove o sublinhado dos links */
-    color: white;
+    color: var(--cor-branco); /* Substitui white */
     font-weight: bold;
 
+    /* Efeitos */
     transition: color 0.3s ease; /* Transição suave para o efeito hover */
 }
 
 nav ul li a:hover {
-    color: #00bcd4; /* Cor de destaque ao passar o mouse */
+    color: var(--cor-primaria); /* Substitui #00bcd4 (Cor de destaque ao passar o mouse, usando Laranja Escuro) */
 }
 
 /* --- Estilos da Divisão de Perfil (#perfil) --- */
 #perfil {
+    /* Cores */
+    background-color: var(--cor-branco); /* Substitui white */
+    color: var(--cor-primaria); /* Cor do ícone/texto dentro do círculo (ex: Laranja) */
+
+    /* Layout e Posição */
     position: relative; /* Essencial para posicionar a lista suspensa */
     cursor: pointer;
-    width: 40px; /* Exemplo de tamanho, ajuste conforme o ícone/imagem */
+    width: 40px; 
     height: 40px;
-    background-color: white; /* Cor de fundo para o "botão" de perfil */
-    border-radius: 50%; /* Transforma em círculo (se for usar uma imagem de perfil) */
+    border-radius: 50%; /* Transforma em círculo */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,31 +61,37 @@ nav ul li a:hover {
 }
 
 #perfil:hover {
-    background-color: #00bcd4;
+    background-color: var(--cor-primaria); /* Substitui #00bcd4 */
+    color: var(--cor-branco); /* Cor do ícone/texto ao passar o mouse */
 }
 
 
 /* --- Estilos da Lista de Perfil Suspensa (#listaPerfil) --- */
 #listaPerfil {
+    /* Cores e Bordas */
+    background-color: var(--cor-branco); /* Substitui white */
+    border: 1px solid var(--cor-borda); /* Substitui #ccc */
+    color: var(--cor-texto-principal); /* Substitui #333 */
+    
+    /* Layout e Posição */
     position: absolute;
-    top: 50px; /* Desloca abaixo do botão #perfil. Ajuste conforme a altura do header. */
+    top: 50px; /* Ajuste conforme a altura do header. */
     right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
     border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Mantido */
     width: 200px; /* Largura da lista suspensa */
     z-index: 1000; /* Garante que fique acima de outros elementos */
     list-style: none;
     padding: 0;
     margin: 0;
-    color: #333; /* Cor do texto dentro da lista */
-    /* A visibilidade é controlada pelo React ({perfilAtivado && ...}) */
 }
 
 .itemPerfil {
+    /* Cores e Bordas */
+    border-bottom: 1px solid var(--cor-borda); /* Substitui #eee */
+    
+    /* Layout */
     padding: 10px 15px;
-    border-bottom: 1px solid #eee;
     font-size: 0.9em;
 }
 
@@ -101,6 +113,6 @@ nav ul li a:hover {
 }
 
 .itemPerfil:hover {
-    background-color: #f4f4f4;
+    background-color: var(--cor-fundo-claro); /* Substitui #f4f4f4 */
     cursor: pointer;
 }

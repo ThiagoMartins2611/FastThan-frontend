@@ -26,6 +26,7 @@ function SiteHeader () {
     adm:false
     
   } );
+  const navigate = useNavigate ();
 
   const [ logado, setLogado ] = useState ( false );
 
@@ -50,7 +51,7 @@ function SiteHeader () {
 
   }, [] );
   
-  const navigate = useNavigate ();
+
 
   function acionarBotao () {
     

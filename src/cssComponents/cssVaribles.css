@@ -1,37 +1,50 @@
 :root {
-  /* 🎨 Cores Primárias e de Ação */
-  --cor-primaria: #FF8C00; /* Laranja Escuro: Energia, atenção, Call-to-Action (CTA) principal */
-  --cor-secundaria: #007bff; /* Azul Brilhante: Confiança, links, botões secundários */
-  --cor-acento: #4CAF50; /* Verde: Sucesso, confirmação, "Entregue" */
+    /* ================================================================
+    PALETA DE CORES: AZUL MARINHO E BEGE/CARAMELO (Elegância e Confiança)
+    ================================================================
+    */
 
-  /* ⚪ ⚫ Cores Neutras (Fundo, Texto e Bordas) */
-  --cor-fundo-claro: #f8f9fa; /* Branco Off-White: Fundo principal */
-  --cor-fundo-escuro: #212529; /* Preto Quase Escuro: Fundo para seções escuras (se houver) */
-  --cor-texto-principal: #343a40; /* Cinza Escuro: Texto principal */
-  --cor-texto-secundario: #6c757d; /* Cinza Médio: Texto auxiliar, legendas */
-  --cor-borda: #dee2e6; /* Cinza Claro: Bordas, divisores */
-  --cor-branco: #ffffff; /* Branco Puro: Texto sobre fundo escuro */
+    /* --- Cores de Marca/Destaque --- */
+    
+    /* Azul Marinho: Cor Principal, Fundo de Header, Títulos importantes. Transmite confiança. */
+    --cor-secundaria: #001F3F; 
 
-  /* 🔔 Cores de Status e Feedback */
-  --cor-sucesso: var(--cor-acento); /* Verde: Sucesso, entrega completa */
-  --cor-aviso: #ffc107; /* Amarelo: Alerta, pendente */
-  --cor-erro: #dc3545; /* Vermelho: Erro, atenção imediata */
+    /* Caramelo/Terracota (Saddle Brown): Cor de Ação (CTA), Hover, Destaque sutil. Evoca aconchego e qualidade. */
+    --cor-primaria: #8B4513; 
+
+    /* --- Cores de Fundo e Texto --- */
+
+    /* Bege/Creme (Quase Branco): Usado como texto em fundos escuros e como fundo de áreas claras/limpas. */
+    --cor-branco: #F5F5DC; 
+
+    /* Branco Puro: Para fundos muito limpos ou contrastes em elementos muito específicos. */
+    --cor-fundo-branco: #FFFFFF;
+
+    /* Cinza Escuro: Cor de texto principal em fundos claros. Mais suave que o preto total. */
+    --cor-texto-principal: #333333; 
+    
+    /* Cinza Muito Claro: Fundo sutil para hover ou seções de fundo. */
+    --cor-fundo-claro: #FAFAFA; 
+    
+    /* --- Cores de Borda e Auxiliares --- */
+    
+    /* Cinza Claro: Para bordas, divisores e linhas sutis. */
+    --cor-borda: #DDDDDD; 
+
+    /* Vermelho de Alerta/Erro (opcional): Para mensagens de erro ou ações de "Sair". */
+    --cor-alerta: #CC0000;
 }
 
-/* 📋 Exemplos de Uso */
-.cabecalho {
-  background-color: var(--cor-fundo-claro);
-  color: var(--cor-texto-principal);
-  border-bottom: 1px solid var(--cor-borda);
-}
-
-.botao-principal {
-  background-color: var(--cor-primaria);
-  color: var(--cor-branco);
-  border: none;
-}
-
-.status-entregue {
-  color: var(--cor-sucesso);
-  font-weight: bold;
+/* ================================================================
+OPCIONAL: Configurações de Tipografia e Sombras no Root
+================================================================
+*/
+:root {
+    /* Tipografia (Ajuste para fontes elegantes como 'Montserrat' ou 'Merriweather' no body) */
+    --fonte-principal: 'Arial', sans-serif;
+    --peso-negrito: 700;
+    --peso-medio: 500;
+    
+    /* Sombras Padrão (Sombra suave para cards ou elementos elevados) */
+    --sombra-padrao: 0 2px 5px rgba(0, 0, 0, 0.08);
 }

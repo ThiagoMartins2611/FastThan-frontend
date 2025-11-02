@@ -68,6 +68,8 @@ function SiteHeader () {
     <>
     
       <header>
+
+        <h1>FASTHAN</h1>
                 
         <nav>
 

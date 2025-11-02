@@ -1,3 +1,6 @@
+@import '../cssVaribles.css';
+
+
 header {
     /* Cores */
     background-color: var(--cor-secundaria); /* Substitui #6FC2F2 (similar a Azul Brilhante) */
@@ -12,18 +15,19 @@ header {
     width: 100%;
 }
 
+header h1{
+    padding-left: 20px;
+}
+
+
 nav ul {
     list-style: none;
-    padding-left: 10px;
     margin: 0;
     display: flex;
-    gap: 10px;
+    gap: 50px;
+    padding: 0;
 }
 
-/* nav ul li não precisa de estilo se não tiver algo específico */
-nav ul li {
-
-}
 
 nav ul li a {
     /* Cores */
@@ -115,4 +119,8 @@ nav ul li a:hover {
 .itemPerfil:hover {
     background-color: var(--cor-fundo-claro); /* Substitui #f4f4f4 */
     cursor: pointer;
+}
+
+#semPerfil{
+     padding-right: 20px;
 }

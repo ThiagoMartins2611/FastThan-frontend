@@ -1,50 +1,26 @@
 :root {
-    /* ================================================================
-    PALETA DE CORES: AZUL MARINHO E BEGE/CARAMELO (Elegância e Confiança)
-    ================================================================
-    */
-
-    /* --- Cores de Marca/Destaque --- */
     
-    /* Azul Marinho: Cor Principal, Fundo de Header, Títulos importantes. Transmite confiança. */
     --cor-secundaria: #001F3F; 
-
-    /* Caramelo/Terracota (Saddle Brown): Cor de Ação (CTA), Hover, Destaque sutil. Evoca aconchego e qualidade. */
-    --cor-primaria: #8B4513; 
-
-    /* --- Cores de Fundo e Texto --- */
-
-    /* Bege/Creme (Quase Branco): Usado como texto em fundos escuros e como fundo de áreas claras/limpas. */
-    --cor-branco: #F5F5DC; 
-
-    /* Branco Puro: Para fundos muito limpos ou contrastes em elementos muito específicos. */
+    --cor-primaria: #46748F ; 
+    --cor-branco: #ebeff5; 
     --cor-fundo-branco: #FFFFFF;
-
-    /* Cinza Escuro: Cor de texto principal em fundos claros. Mais suave que o preto total. */
+    --cor-hover-claro:#d8dfe8;
+    --cor-hover-escuro:#538ead;
     --cor-texto-principal: #333333; 
     
-    /* Cinza Muito Claro: Fundo sutil para hover ou seções de fundo. */
     --cor-fundo-claro: #FAFAFA; 
-    
-    /* --- Cores de Borda e Auxiliares --- */
     
     /* Cinza Claro: Para bordas, divisores e linhas sutis. */
     --cor-borda: #DDDDDD; 
 
-    /* Vermelho de Alerta/Erro (opcional): Para mensagens de erro ou ações de "Sair". */
     --cor-alerta: #CC0000;
 }
 
-/* ================================================================
-OPCIONAL: Configurações de Tipografia e Sombras no Root
-================================================================
-*/
 :root {
-    /* Tipografia (Ajuste para fontes elegantes como 'Montserrat' ou 'Merriweather' no body) */
+ 
     --fonte-principal: 'Arial', sans-serif;
     --peso-negrito: 700;
     --peso-medio: 500;
-    
-    /* Sombras Padrão (Sombra suave para cards ou elementos elevados) */
     --sombra-padrao: 0 2px 5px rgba(0, 0, 0, 0.08);
+
 }

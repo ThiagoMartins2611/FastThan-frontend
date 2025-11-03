@@ -1,7 +1,6 @@
 import '../../cssComponents/siteDivision/siteFooter.css';
 
 function SiteFooter() {
-  
 
   return (
     <>
@@ -23,7 +22,7 @@ function SiteFooter() {
               <div className="footer-section">
                   <h4>Contato</h4>
                   <address>
-                      Rua da Elegância, 123<br/>
+                      Rua da Elegancia, 123<br/>
                       Cidade Sofisticada, UF<br/>
                       Telefone: (00) 1234-5678<br/>
                       Email: <a href="mailto:contato@loja.com">contato@loja.com</a>

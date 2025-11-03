@@ -1,97 +1,101 @@
 @import '../cssVaribles.css';
-/*
- * Estilo para o componente SiteFooter
- * Paleta: Azul Marinho (#001F3F) e Bege (#F5F5DC)
- */
 
 footer {
-    /* Cor de fundo: Azul Marinho (Cor Secundária) para elegância e contraste */
-    background-color: var(--cor-secundaria); 
+
+    background-color:var(--cor-secundaria); 
+    color:var(--cor-branco);
+    width:100%;
     
-    /* Cor do texto: Bege/Creme (Cor Branco) para alto contraste e sofisticação */
-    color: var(--cor-branco);
-    
-    
-    /* Garante que ocupe a largura total e fica no final da página */
-    width: 100%;
-    
-    /* Remove text-align: center; para permitir um layout mais profissional seções */
-    /* text-align: left; é o padrão, que funciona melhor para blocos */
 }
 
-/* 🧱 Container de Conteúdo (Assume-se que existe uma div interna para centralizar) */
 .footer-content {
-    display: flex;
-    justify-content: space-between; /* Espaçamento entre as colunas */
-    flex-wrap: wrap; /* Garante quebras em telas menores */
-    max-width: 1200px; /* Limite de largura para um design limpo */
-    margin: 0 auto; /* Centraliza o conteúdo */
-    text-align: left; /* Alinha o texto das colunas à esquerda */
-    gap: 30px; /* Espaçamento entre as colunas */
+
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between; 
+    max-width:1200px;
+    margin:0 auto;
+    text-align:left;
+    gap:30px;
+
 }
 
-/* ✉️ Estilo para a tag <address> e Títulos de Seção */
 address, 
 .footer-section h4 {
-    color: var(--cor-branco); 
-    font-style: normal;
-    margin-bottom: 15px;
-    font-weight: 600; /* Títulos um pouco mais fortes */
-    letter-spacing: 0.5px; /* Adiciona um pequeno espaçamento entre letras */
+
+    color:var(--cor-branco); 
+    font-style:normal;
+    margin-bottom:15px;
+    font-weight:600;
+    letter-spacing:0.5px;
+
 }
 
 address {
-    font-size: 0.95rem;
-    line-height: 1.6; /* Aumenta a legibilidade do endereço/contato */
+
+    font-size:0.95rem;
+    line-height:1.6;
+
 }
 
-/* 📝 Estilo para o parágrafo de direitos autorais */
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Linha divisória sutil */
-    margin-top: 40px;
-    padding-top: 20px;
-    text-align: center; /* Centraliza o texto de direitos autorais */
-    width: 100%;
+
+    border-top:1px solid rgba(255, 255, 255, 0.1);
+    margin-top:40px;
+    padding-top:20px;
+    text-align:center;
+    width:100%;
+
 }
 
 .footer-bottom p {
-    color: var(--cor-branco);
-    font-size: 0.85rem; /* Fonte menor e discreta */
-    margin: 0;
-    opacity: 0.7; /* Texto sutil */
+
+    color:var(--cor-branco);
+    font-size:0.85rem;
+    margin:0;
+    opacity:0.7; 
+
 }
 
-/* 🔗 Estilo de links dentro do rodapé */
 footer a {
-    /* Cor de destaque: Caramelo/Terracota (Cor Primária) */
-    color: var(--cor-primaria); 
-    text-decoration: none;
-    transition: color 0.3s ease;
+    
+    color:var(--cor-primaria); 
+    text-decoration:none;
+    transition:color 0.3s ease;
+
 }
 
 footer a:hover {
-    /* Cor do link principal (Azul Marinho) no hover para contraste sutil */
-    color: var(--cor-branco); 
-    text-decoration: underline;
+
+    color:var(--cor-hover-claro); 
+    text-decoration:underline;
+
 }
 
-/* Estilo para links de navegação ou listas internas (se houver) */
 .footer-links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+
+    list-style:none;
+    padding:0;
+    margin:0;
+
 }
 
 .footer-links ul li {
-    margin-bottom: 8px;
+
+    margin-bottom:8px;
+
 }
 
 .footer-links ul li a {
-    color: var(--cor-branco); /* Links de navegação em creme */
-    opacity: 0.8;
+
+    color:var(--cor-branco);
+    opacity:0.8;
+
 }
 
 .footer-links ul li a:hover {
-    color: var(--cor-primaria); /* Destaque em Caramelo/Terracota no hover */
-    opacity: 1;
+
+    color:var(--cor-hover-claro); 
+    opacity:1;
+
 }

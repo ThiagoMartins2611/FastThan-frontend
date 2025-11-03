@@ -1,126 +1,130 @@
 @import '../cssVaribles.css';
 
-
 header {
-    /* Cores */
-    background-color: var(--cor-secundaria); /* Substitui #6FC2F2 (similar a Azul Brilhante) */
-    color: var(--cor-branco); /* Substitui white */
 
-    /* Layout e Efeitos */
+    background-color: var(--cor-secundaria);
+    color: var(--cor-branco);
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Mantido, boa prática */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     display: flex;
-    height: 20%; /* Ajuste a altura conforme necessário (ex: 60px para um valor fixo) */
+    height: 20%;
     justify-content: space-between;
     width: 100%;
 }
 
-header h1{
+header h1 {
+
     padding-left: 20px;
+
 }
 
-
 nav ul {
+
     list-style: none;
     margin: 0;
     display: flex;
     gap: 50px;
     padding: 0;
+
 }
 
-
 nav ul li a {
-    /* Cores */
-    text-decoration: none; /* Remove o sublinhado dos links */
-    color: var(--cor-branco); /* Substitui white */
-    font-weight: bold;
 
-    /* Efeitos */
-    transition: color 0.3s ease; /* Transição suave para o efeito hover */
+    text-decoration:none;
+    color:var(--cor-branco); 
+    font-weight:bold;
+    transition:color 0.3s ease;
+
 }
 
 nav ul li a:hover {
-    color: var(--cor-primaria); /* Substitui #00bcd4 (Cor de destaque ao passar o mouse, usando Laranja Escuro) */
+
+    color:var(--cor-hover-escuro);
+
 }
 
-/* --- Estilos da Divisão de Perfil (#perfil) --- */
 #perfil {
-    /* Cores */
-    background-color: var(--cor-branco); /* Substitui white */
-    color: var(--cor-primaria); /* Cor do ícone/texto dentro do círculo (ex: Laranja) */
 
-    /* Layout e Posição */
-    position: relative; /* Essencial para posicionar a lista suspensa */
-    cursor: pointer;
-    width: 40px; 
-    height: 40px;
-    border-radius: 50%; /* Transforma em círculo */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    user-select: none; /* Impede a seleção de texto ao clicar */
-    transition: background-color 0.3s ease;
-    margin: 10px;
+    background-color:var(--cor-branco);
+    color:var(--cor-primaria);
+    position:relative;
+    cursor:pointer;
+    width:40px; 
+    height:40px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    user-select:none;
+    transition:background-color 0.3s ease;
+    margin:10px;
+
 }
 
 #perfil:hover {
-    background-color: var(--cor-primaria); /* Substitui #00bcd4 */
-    color: var(--cor-branco); /* Cor do ícone/texto ao passar o mouse */
+
+    background-color:var(--cor-primaria);
+    color:var(--cor-hover-claro);
+
 }
 
-
-/* --- Estilos da Lista de Perfil Suspensa (#listaPerfil) --- */
 #listaPerfil {
-    /* Cores e Bordas */
-    background-color: var(--cor-branco); /* Substitui white */
-    border: 1px solid var(--cor-borda); /* Substitui #ccc */
-    color: var(--cor-texto-principal); /* Substitui #333 */
-    
-    /* Layout e Posição */
-    position: absolute;
-    top: 50px; /* Ajuste conforme a altura do header. */
-    right: 0;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Mantido */
-    width: 200px; /* Largura da lista suspensa */
-    z-index: 1000; /* Garante que fique acima de outros elementos */
-    list-style: none;
-    padding: 0;
-    margin: 0;
+
+    background-color:var(--cor-branco); 
+    border:1px solid var(--cor-borda);
+    color:var(--cor-texto-principal);
+    position:absolute;
+    top:50px;
+    right:0;
+    border-radius:4px;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 0.2); 
+    width:200px;
+    z-index:1000;
+    list-style:none;
+    padding:0;
+    margin:0;
+
 }
 
 .itemPerfil {
-    /* Cores e Bordas */
-    border-bottom: 1px solid var(--cor-borda); /* Substitui #eee */
-    
-    /* Layout */
-    padding: 10px 15px;
-    font-size: 0.9em;
+
+    border-bottom:1px solid var(--cor-borda);
+    padding:10px 15px;
+    font-size:0.9em;
+
 }
 
 .itemPerfil:last-child {
-    border-bottom: none;
+
+    border-bottom:none;
+
 }
 
-/* Estilos específicos para os itens (apenas para visualização) */
-#nomeUsuario::before {
-    content: 'Nome de Usuário: ';
+#nomeUsuario:before {
+
+    content: 'Nome de Usuário:';
     font-weight: bold;
     display: inline;
+
 }
 
 #tipoUsuario::before {
-    content: 'Tipo: ';
+
+    content:'Tipo: ';
     font-weight: bold;
     display: inline;
+
 }
 
 .itemPerfil:hover {
-    background-color: var(--cor-fundo-claro); /* Substitui #f4f4f4 */
+
+    background-color: var(--cor-fundo-claro);
     cursor: pointer;
 }
 
-#semPerfil{
+#semPerfil {
+
      padding-right: 20px;
+
 }

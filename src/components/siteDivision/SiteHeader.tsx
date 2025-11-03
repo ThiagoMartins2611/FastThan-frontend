@@ -1,6 +1,7 @@
 import '../../cssComponents/siteDivision/siteHeader.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
 interface Usuario {
 
@@ -26,6 +27,7 @@ function SiteHeader () {
     adm:false
     
   } );
+  
   const navigate = useNavigate ();
 
   const [ logado, setLogado ] = useState ( false );
@@ -36,8 +38,7 @@ function SiteHeader () {
 
     if ( token ) {
     
-      const payloadBase64 = token.split ( '.' ) [ 1 ]; 
-      const decodedPayload = JSON.parse ( atob ( payloadBase64 ) ); 
+      const decodedPayload = jwtDecode<Usuario>(token)
       console.log ( decodedPayload )
       
       setUsuario ( decodedPayload )

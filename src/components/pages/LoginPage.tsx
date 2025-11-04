@@ -15,17 +15,18 @@ function LoginPage(){
           event.preventDefault();
         const formData = new FormData(event.currentTarget)
         const email = formData.get("email")
-        const senha = formData.get("senha")
+        const key = formData.get("senha")
 
         try {
-            const res = await api.post("/login",{email,senha})
-               if(res.status===200){
+            const res = await api.post("/public/login",{email,key})
+            console.log(res)
+            if(res.status===200){
                 localStorage.setItem("token",res?.data?.token)
-                navigate("/")
+                navigate("/HomePage")
             }
         } catch (error) {
             const msg = "Erro ao fazer login. Verifique suas credenciais."
-            navigate(`/login?mensagem=${encodeURIComponent(msg)}`)
+            setMensagem(msg)
             
         }
        
@@ -39,9 +40,12 @@ function LoginPage(){
         <div>
             <h1>Login Page</h1>
             <form onSubmit={logar}>
-                <input type="text" />
-                <input type="password" />
+                <input name="email" type="text" />
+                <input name="senha" type="password" />
                 <button type="submit">Login</button> 
+                {
+                    mensagem
+                }
             </form>
   
         </div>

@@ -1,0 +1,104 @@
+.cadastroCard {
+    /* Dimensões e Posicionamento do Card */
+    max-width: 450px;
+    margin: 50px auto; /* Centraliza horizontalmente e adiciona margem superior/inferior */
+    padding: 30px;
+    
+    /* Cores e Aparência */
+    background-color: var(--cor-fundo-branco); /* Fundo branco para o card */
+    color: var(--cor-texto-principal); /* Cor de texto principal */
+    border-radius: 8px; /* Bordas arredondadas suaves */
+    box-shadow: var(--sombra-padrao), 0 6px 15px rgba(0, 31, 63, 0.15); /* Sombra mais destacada, usando a cor secundária para dar profundidade */
+    border: 1px solid var(--cor-borda); /* Borda sutil */
+    
+    /* Fonte */
+    font-family: var(--fonte-principal);
+}
+
+.cadastroCard h1 {
+    color: var(--cor-secundaria); /* Título com a cor secundária */
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: var(--peso-negrito);
+    font-size: 1.8em;
+}
+
+/* Estilo para cada campo (div) */
+.cadastroCard > form > div {
+    margin-bottom: 20px;
+}
+
+.cadastroCard label {
+    display: block; /* Garante que o label ocupe toda a linha */
+    margin-bottom: 8px;
+    font-weight: var(--peso-medio);
+    color: var(--cor-secundaria);
+}
+
+.cadastroCard input[type="text"],
+.cadastroCard input[type="number"],
+.cadastroCard textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    box-sizing: border-box; /* Inclui padding e border no width total */
+    font-size: 1em;
+    color: var(--cor-texto-principal);
+    background-color: var(--cor-fundo-claro); /* Fundo sutilmente mais claro */
+    transition: border-color 0.3s ease;
+}
+
+.cadastroCard input:focus,
+.cadastroCard textarea:focus {
+    border-color: var(--cor-primaria); /* Foco destacado com a cor primária */
+    outline: none; /* Remove o outline padrão do navegador */
+    box-shadow: 0 0 0 2px rgba(70, 116, 143, 0.2);
+}
+
+.cadastroCard textarea {
+    resize: vertical; /* Permite redimensionamento vertical */
+    min-height: 100px;
+}
+
+/* Estilo do Botão */
+.cadastroCard button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-weight: var(--peso-negrito);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cadastroCard button[type="submit"]:hover {
+    background-color: var(--cor-hover-escuro); /* Efeito hover mais escuro */
+}
+
+/* Estilo da Mensagem de Feedback */
+.cadastroCard p {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: var(--peso-medio);
+}
+
+/* Estilo para mensagem de sucesso (presumido res.status === 200) */
+.cadastroCard p:not([style*="color: var(--cor-alerta)"]) {
+    color: var(--cor-secundaria); 
+    background-color: #e6f7ff; /* Um fundo suave para sucesso */
+    border: 1px solid var(--cor-primaria);
+}
+
+/* Estilo para mensagem de erro (catch block) */
+.cadastroCard p:not([style*="color: var(--cor-secundaria)"]) {
+    color: var(--cor-alerta);
+    background-color: #ffebeb; /* Um fundo suave para alerta/erro */
+    border: 1px solid var(--cor-alerta);
+}

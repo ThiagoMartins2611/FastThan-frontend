@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+
 
 const api = axios.create ( {
 
@@ -31,12 +33,14 @@ api.interceptors.response.use (
 
         const status = error?.response?.status
 
-        if ( status === 401 && ! ( error?.response?.config?.url.endsWith ( "/login" ) ) ) {
+        if ( status === 401 && 
+            (! ( error?.response?.config?.url.endsWith ( "/login" ) 
+            || ! ( error?.response?.config?.url.endsWith ( "/HomePage" ) )
+        
+        )) ) {
 
             localStorage.removeItem ( "token" )
-
-            window.location.href = "/login?mensagem=Token_expirado!"
-
+            window.location.href = "/login"
         }
 
         return Promise.reject ( error )

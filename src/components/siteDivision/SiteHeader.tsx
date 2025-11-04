@@ -27,6 +27,8 @@ function SiteHeader () {
     adm:false
     
   } );
+
+
   
   const navigate = useNavigate ();
 
@@ -39,7 +41,6 @@ function SiteHeader () {
     if ( token ) {
     
       const decodedPayload = jwtDecode<Usuario>(token)
-      console.log ( decodedPayload )
       
       setUsuario ( decodedPayload )
       setLogado ( true );
@@ -64,6 +65,8 @@ function SiteHeader () {
     navigate ( "/login" )
   }
 
+
+
   return (
 
     <>
@@ -75,10 +78,22 @@ function SiteHeader () {
         <nav>
 
             <ul>
-
-                <li> <a href = "#home"> Início </a> </li>
-                <li> <a href = "#about"> Sobre </a> </li>
-                <li> <a href = "#contact"> Contato </a> </li>
+              <li> <a href = "/HomePage"> Home </a> </li>
+              {usuario.adm ?
+                (
+                  <>
+                    <li> <a href = "#home"> Usuarios </a> </li>
+                    <li> <a href = "#about"> Carrinhos </a> </li>
+                    <li> <a href = "/cadastrarItem"> Cadastrar Itens </a> </li>
+                  </>
+                ): (
+                  <>
+                    <li> <a href = "#about"> Sobre </a> </li>
+                    <li> <a href = "#contact"> Contato </a> </li>
+                  </>
+                )
+              }
+               
                 
             </ul>
             

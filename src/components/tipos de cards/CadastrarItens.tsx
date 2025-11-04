@@ -47,7 +47,7 @@ function CadastrarItens() {
 
         // Validação básica para evitar NaN no preço
         if (isNaN(dataToSend.price)) {
-             setMensagem("Erro: O preço não é um número válido.");
+             setMensagem("O preço não é um número válido.");
              return; 
         }
 

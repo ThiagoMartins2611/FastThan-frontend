@@ -1,11 +1,10 @@
 :root {
     
-    --cor-secundaria: #001F3F; 
     --cor-primaria: #46748F ; 
+    --cor-secundaria:#032345; 
     --cor-branco: #ebeff5; 
     --cor-fundo-branco: #FFFFFF;
-    --cor-hover-claro:#d8dfe8;
-    --cor-hover-escuro:#538ead;
+    --cor-hover:#c3d3e3;
     --cor-texto-principal: #333333; 
     
     --cor-fundo-claro: #FAFAFA; 

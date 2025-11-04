@@ -6,17 +6,17 @@
     display: flex;
     justify-content: center; /* Centraliza o items-container */
 
-
 }
 
 /* Container que envolve todos os cards de itens */
 .items-container {
-    width: 100vw;
+    width: 100%;
+    max-width: 100%;
     
     margin: 0; /* Centraliza */
     display: flex;
     /* Layout responsivo com CSS Grid: Colunas de no mínimo 280px */
-    
+  
     gap: 30px; /* Espaço entre os cards */
     padding: 10px 0;
     flex-wrap: wrap;
@@ -40,7 +40,6 @@
     flex-direction: column;
     justify-content: space-between; /* Empurra preço para o fundo */
 
-
 }
 
 .item-card:hover {
@@ -51,7 +50,7 @@
 /* Imagem do Item */
 .item-image {
     width: 100%;
-    height: 200px; /* Altura fixa para uniformidade */
+    height: 150px; /* Altura fixa para uniformidade */
     object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
     border-radius: 6px;
     margin-bottom: 10px;
@@ -89,4 +88,22 @@
     text-align: center;
     font-weight: var(--peso-negrito);
 
+}
+
+#editarEapagar{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+}
+
+#editar{
+    width:20px;
+    height: 20px;
+}
+
+#apagar{
+    width: 20px;
+    height: 20px;
 }

@@ -20,16 +20,14 @@ function SiteHeader () {
   const [ usuario, setUsuario ] = useState <Usuario> ( {
     
     _id:"",
-    name: "",
-    age: 0,
-    email: "",
-    key: "",
+    name:"",
+    age:0,
+    email:"",
+    key:"",
     adm:false
     
   } );
 
-
-  
   const navigate = useNavigate ();
 
   const [ logado, setLogado ] = useState ( false );
@@ -40,7 +38,7 @@ function SiteHeader () {
 
     if ( token ) {
     
-      const decodedPayload = jwtDecode<Usuario>(token)
+      const decodedPayload = jwtDecode <Usuario> ( token )
       
       setUsuario ( decodedPayload )
       setLogado ( true );
@@ -52,8 +50,6 @@ function SiteHeader () {
     }
 
   }, [] );
-  
-
 
   function acionarBotao () {
     
@@ -61,11 +57,14 @@ function SiteHeader () {
     
   }
 
-  function redirecionarParaLogin () {
+  function redirecionarParaLogin(){
     navigate ( "/login" )
   }
 
-
+  function Logout(){
+    localStorage.clear();
+    location.reload()
+  }
 
   return (
 
@@ -92,8 +91,7 @@ function SiteHeader () {
                     <li> <a href = "#contact"> Contato </a> </li>
                   </>
                 )
-              }
-               
+              } 
                 
             </ul>
             
@@ -123,6 +121,10 @@ function SiteHeader () {
                 }
 
                 </li>
+
+
+                <li className = 'itemPerfil' id = 'Logout' onClick={Logout}>logout</li>
+              
               
               </ul>
 

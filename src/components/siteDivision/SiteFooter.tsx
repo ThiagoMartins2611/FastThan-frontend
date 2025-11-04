@@ -31,7 +31,7 @@ function SiteFooter() {
           </div>
           
           <div className="footer-bottom">
-              <p>&copy; 2025 Nome da Loja. Todos os direitos reservados.</p>
+              <p>&copy; 2025 FASTHAN. Todos os direitos reservados.</p>
           </div>
       </footer>
     </>

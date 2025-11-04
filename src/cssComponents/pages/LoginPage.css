@@ -1,0 +1,87 @@
+/* ----------------------------------- */
+.LoginPage {
+    /* Garante que o container de login ocupe a tela toda */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Altura mínima de 100% da viewport */
+    background-color: var(--cor-fundo-claro); /* Fundo suave */
+    font-family: var(--fonte-principal);
+}
+
+/* O container principal que envolve o formulário (o <div> pai no seu React) */
+.login-container {
+    background-color: var(--cor-fundo-branco);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: var(--sombra-padrao);
+    width: 100%;
+    max-width: 400px; /* Largura máxima para um formulário limpo */
+    box-sizing: border-box; /* Inclui padding na largura */
+}
+
+/* Título principal */
+.login-container h1 {
+    color: var(--cor-secundaria);
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: var(--peso-negrito);
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--cor-borda);
+    padding-bottom: 10px;
+}
+
+/* Formulário */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre os elementos do formulário */
+}
+
+/* Inputs de Texto e Senha */
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    padding: 12px 15px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--cor-texto-principal);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: var(--cor-primaria);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(70, 116, 143, 0.2); /* Sombra de foco suave */
+}
+
+/* Botão de Login */
+.login-form button[type="submit"] {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: var(--peso-negrito);
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.login-form button[type="submit"]:hover {
+    background-color: var(--cor-hover-escuro);
+}
+
+/* Mensagem de Erro */
+.mensagem-erro {
+    color: var(--cor-alerta);
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid var(--cor-alerta);
+    background-color: rgba(204, 0, 0, 0.05);
+    border-radius: 4px;
+    font-weight: var(--peso-medio);
+}

@@ -2,29 +2,30 @@
 
 header {
 
-    background-color: var(--cor-secundaria);
-    color: var(--cor-branco);
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    display: flex;
-    height: 20%;
-    justify-content: space-between;
-    width: 100vw;
+    align-items:center;
+    background-color:var(--cor-secundaria);
+    box-shadow:0 2px 4px black;
+    color:var(--cor-branco);
+    display:flex;
+    height:20%;
+    justify-content:space-between;
+    width:100vw;
+
 }
 
 header h1 {
 
-    padding-left: 20px;
+    padding-left:20px;
 
 }
 
 nav ul {
 
-    list-style: none;
-    margin: 0;
-    display: flex;
-    gap: 50px;
-    padding: 0;
+    display:flex;
+    list-style:none;
+    margin:0;
+    gap:50px;
+    padding:0;
 
 }
 
@@ -33,13 +34,13 @@ nav ul li a {
     text-decoration:none;
     color:var(--cor-branco); 
     font-weight:bold;
-    transition:color 0.3s ease;
+    transition:0.3s ease;
 
 }
 
 nav ul li a:hover {
 
-    color:var(--cor-hover-escuro);
+    color:var(--cor-hover);
 
 }
 
@@ -57,7 +58,7 @@ nav ul li a:hover {
     align-items:center;
     font-weight:bold;
     user-select:none;
-    transition:background-color 0.3s ease;
+    transition:0.3s ease;
     margin:10px;
 
 }
@@ -65,7 +66,7 @@ nav ul li a:hover {
 #perfil:hover {
 
     background-color:var(--cor-primaria);
-    color:var(--cor-hover-claro);
+    color:var(--cor-hover);
 
 }
 
@@ -78,7 +79,7 @@ nav ul li a:hover {
     top:50px;
     right:0;
     border-radius:4px;
-    box-shadow:0 4px 8px rgba(0, 0, 0, 0.2); 
+    box-shadow:0 4px 8px black; 
     width:200px;
     z-index:1000;
     list-style:none;
@@ -103,24 +104,25 @@ nav ul li a:hover {
 
 #nomeUsuario:before {
 
-    content: 'Nome de Usuário:';
-    font-weight: bold;
-    display: inline;
+    content:'Nome de Usuário:';
+    font-weight:bold;
+    display:inline;
 
 }
 
-#tipoUsuario::before {
+#tipoUsuario:before {
 
     content:'Tipo: ';
-    font-weight: bold;
-    display: inline;
+    font-weight:bold;
+    display:inline;
 
 }
 
 .itemPerfil:hover {
 
-    background-color: var(--cor-fundo-claro);
-    cursor: pointer;
+    background-color:var(--cor-fundo-claro);
+    cursor:pointer;
+
 }
 
 #semPerfil {

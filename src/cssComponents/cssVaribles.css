@@ -1,25 +1,22 @@
 :root {
     
-    --cor-primaria: #46748F ; 
+    --cor-primaria:#46748F; 
     --cor-secundaria:#032345; 
-    --cor-branco: #ebeff5; 
-    --cor-fundo-branco: #FFFFFF;
+    --cor-branco:#ebeff5; 
+    --cor-fundo-branco:#FFFFFF;
     --cor-hover:#c3d3e3;
-    --cor-texto-principal: #333333; 
-    
-    --cor-fundo-claro: #FAFAFA; 
-    
-    /* Cinza Claro: Para bordas, divisores e linhas sutis. */
-    --cor-borda: #DDDDDD; 
+    --cor-texto-principal:#333333;     
+    --cor-fundo-claro:#FAFAFA; 
+    --cor-borda:#DDDDDD; 
+    --cor-alerta:#CC0000;
 
-    --cor-alerta: #CC0000;
 }
 
 :root {
  
-    --fonte-principal: 'Arial', sans-serif;
-    --peso-negrito: 700;
-    --peso-medio: 500;
-    --sombra-padrao: 0 2px 5px rgba(0, 0, 0, 0.08);
+    --fonte-principal:'Arial', sans-serif;
+    --peso-negrito:700;
+    --peso-medio:500;
+    --sombra-padrao:0 2px 5px rgba(0, 0, 0, 0.08);
 
 }

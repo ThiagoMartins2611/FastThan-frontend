@@ -87,8 +87,18 @@ function SiteHeader () {
                   </>
                 ): (
                   <>
-                    <li> <a href = "#about"> Sobre </a> </li>
-                    <li> <a href = "#contact"> Contato </a> </li>
+                    <li> <a onClick={
+                      ()=>{
+                        if(logado){
+                          navigate("/CarrinhoPage")
+                        }else{
+                          navigate("/login")
+                        }
+                      }
+                    } href = ""> Meu Carrinho </a> </li>
+                    <li> <a href = "#naoTem"> Favoritos </a> </li>
+                    
+                  
                   </>
                 )
               } 

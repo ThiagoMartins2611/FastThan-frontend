@@ -10,9 +10,9 @@ import { jwtDecode } from "jwt-decode";
 interface Item {
   _id: string;
   name: string;
-  description: string;
   price: number;
   imageUrl: string;
+  description: string;
   userId: number;
 }
 
@@ -40,9 +40,12 @@ function HomePage() {
 
   const [activePopUp, setActivePopUp] = useState(false);
   const [itemParaApagar, setItemParaApagar] = useState<string | null>(null);
+  const [ activeEdit, setActiveEdit ] = useState ( false )
+  const [itemParaEditar, setItemParaEditar] = useState<Item | null>(null);
+  const [logado, setLogado] = useState(false);
+  const [msgButtons, setMsgButtons] = useState<{[key: string]: string}>({});
 
   function confirmar(itemId: string) {
-    console.log(itemId)
     setItemParaApagar(itemId);
     setActivePopUp(true);
   }
@@ -54,22 +57,71 @@ function HomePage() {
 
   async function apagarItem(itemId: any) {
     try {
-        console.log(itemId)
-      const DeletedItemId = itemId;
-      const res = await api.post("/private/DeleteItem", {DeletedItemId});
+      const res = await api.post("/private/DeleteItem", {DeletedItemId:itemId});
 
       if (res.status === 200) {
-        console.log("Item apagado com sucesso");
-    
         setItems((prevItems) => prevItems.filter((item) => item._id !== itemId));
         setActivePopUp(false);
         setItemParaApagar(null);
+        setMensagem("Item apagado com sucesso!");
+        setError(false);
       } else {
-        alert("Erro ao apagar o item. Tente novamente.");
+        setMensagem("Erro ao apagar o item. Tente novamente.");
+        setError(true);
       }
     } catch (error) {
-      console.error("Erro ao apagar item:", error);
-      alert("Item não foi apagado. Ocorreu um erro inesperado.");
+      setMensagem("Item não foi apagado. Ocorreu um erro inesperado.");
+      setError(true);
+    }
+  }
+
+  async function alterarItem(e:React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    try {
+      if (!itemParaEditar) return;
+
+      const itemEdit = { 
+        _id:itemParaEditar._id, 
+        name:itemParaEditar.name, 
+        price:itemParaEditar.price, 
+        imageUrl:itemParaEditar.imageUrl, 
+        description:itemParaEditar.description 
+      };
+
+      const res = await api.put("/private/UpdateItem", itemEdit);
+
+      if (res.status === 200) {
+        setItems((prev) => prev.map((i) => (i._id === itemParaEditar._id ? itemParaEditar : i)));
+        setActiveEdit(false);
+        setItemParaEditar(null);
+        setMensagem("Item atualizado com sucesso!");
+        setError(false);
+      }
+    } catch (error) {
+      setMensagem("Erro ao editar item. Tente novamente.");
+      setError(true);
+    }
+  }
+
+  async function addCarrinho(itemId:string) {
+    try {
+      const quantityItem = 1;
+      const res = await api.post('/private/AddItemsInCart', {itemId, quantityItem});
+
+      if(res.status == 201) {
+        setMsgButtons((prev) => ({
+          ...prev,
+          [itemId]: res.data.mensagem
+        }));
+      } else {
+        setMensagem(res.data.mensagem);
+        setError(true);
+      }
+
+    } catch (error) {
+      setMensagem("Erro ao se comunicar com o servidor");
+      setError(true);
     }
   }
 
@@ -79,6 +131,9 @@ function HomePage() {
     if (token) {
       const decodedPayload = jwtDecode<Usuario>(token);
       setUsuario(decodedPayload);
+      setLogado(true);
+    } else {
+      setLogado(false);
     }
 
     async function puxarItens() {
@@ -88,7 +143,6 @@ function HomePage() {
         setItems(res.data);
         setError(false);
       } catch (error) {
-        console.error(error);
         setMensagem("Erro ao carregar os itens.");
         setError(true);
       }
@@ -97,29 +151,106 @@ function HomePage() {
     puxarItens();
   }, []);
 
+  // ⬇ Popup desaparece sozinho ⬇
+  useEffect(() => {
+    if (!mensagem) return;
+    const timer = setTimeout(() => {
+      setMensagem("");
+      setError(false);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, [mensagem]);
+
   return (
     <>
+    <div id="Home">
       <SiteHeader />
+
+      {error && mensagem && (
+        <div id="popupErro">
+          {mensagem}
+        </div>
+      )}
+
+      {activeEdit && itemParaEditar && (
+        <div id="editArea">
+          <div id="editForm">
+            <h2>Editar Item</h2>
+
+            <form onSubmit={alterarItem}>
+              <label>Nome:</label>
+              <input
+                type="text"
+                value={itemParaEditar.name}
+                onChange={(e) =>
+                  setItemParaEditar({ ...itemParaEditar, name: e.target.value })
+                }
+              />
+
+              <label>Descrição:</label>
+              <input
+                type="text"
+                value={itemParaEditar.description}
+                onChange={(e) =>
+                  setItemParaEditar({ ...itemParaEditar, description: e.target.value })
+                }
+              />
+
+              <label>Preço:</label>
+              <input
+                type="number"
+                value={itemParaEditar.price}
+                onChange={(e) =>
+                  setItemParaEditar({ ...itemParaEditar, price: Number(e.target.value) })
+                }
+              />
+
+              <label>URL da Imagem:</label>
+              <input
+                type="text"
+                value={itemParaEditar.imageUrl}
+                onChange={(e) =>
+                  setItemParaEditar({ ...itemParaEditar, imageUrl: e.target.value })
+                }
+              />
+
+              <button type="submit">Salvar Alterações</button>
+              <button type="button" onClick={() => setActiveEdit(false)}>Cancelar</button>
+            </form>
+          </div>
+        </div>
+      )}
 
       <main id="HomePage">
 
         <div className="items-container">
-          {error && <div className="error-message">{mensagem}</div>}
 
+        
           {items.map((item) => (
             <div key={item._id} className="item-card">
               <img src={item.imageUrl} alt={item.name} className="item-image" />
               <h2>{item.name}</h2>
-              <h1>{item.price}</h1>
+              <h1>R${item.price}</h1>
+
+              {(logado && !usuario.adm) &&(
+                <div id="adicionarCarrinho">
+                  <button className="btn-carrinho" onClick={()=>{addCarrinho(item._id)}}>
+                    { msgButtons[item._id] ?? "Adicionar no carrinho" }
+                  </button>
+                </div>
+              )}
 
               {usuario.adm && (
                 <div id="editarEapagar">
-                  <img src={pencil} alt="editar" id="editar" />
                   <img
-                    onClick={() => {
-                        confirmar(item._id)
-                        console.log(item._id)
-                    }}
+                    onClick={() => { setItemParaEditar(item); setActiveEdit(true); }}
+                    src={pencil}
+                    alt="editar"
+                    id="editar"
+                  />
+
+                  <img
+                    onClick={() => confirmar(item._id)}
                     src={trash}
                     alt="apagar"
                     id="apagar"
@@ -127,27 +258,23 @@ function HomePage() {
                 </div>
               )}
             </div>
-          ))
-          
-          }
+          ))}
         </div>
 
         {activePopUp && (
           <div id="areaConfirm">
             <div id="confirm">
               <h2>Gostaria mesmo de apagar esse item?</h2>
-              <button
-                onClick={() => apagarItem(itemParaApagar)}
-              >
-                Sim
-              </button>
+              <button onClick={() => apagarItem(itemParaApagar)}>Sim</button>
               <button onClick={naoApagar}>Não</button>
             </div>
           </div>
         )}
+
       </main>
 
       <SiteFooter />
+    </div>
     </>
   );
 }

@@ -4,17 +4,15 @@ import '../../cssComponents/tipos de cards/CadastrarItems.css'
 import { useNavigate } from "react-router-dom";
 
 function CadastrarItens() {
-    // 1. Estados para gerenciar a mensagem de feedback e os valores do formulário
+   
     const [mensagem, setMensagem] = useState("");
     const [formData, setFormData] = useState({
         name: "",
-        price: "", // Mantemos como string no estado para lidar com o input type="number"
+        price: "",
         imageUrl: "",
         description: "",
     });
     const navigate = useNavigate();
-
-    // 2. Função para atualizar o estado quando o input muda
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
         setFormData(prevData => ({
@@ -23,7 +21,6 @@ function CadastrarItens() {
         }));
     };
 
-    // 3. Função para limpar o formulário
     const limparFormulario = () => {
         setFormData({
             name: "",
@@ -36,16 +33,13 @@ function CadastrarItens() {
     async function cadastrar(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        // Conversão para o formato correto antes de enviar
         const dataToSend = {
             name: formData.name,
-            // Certifique-se de que a conversão para float é segura
             price: parseFloat(formData.price.replace(',', '.')), 
             imageUrl: formData.imageUrl,
             description: formData.description
         };
 
-        // Validação básica para evitar NaN no preço
         if (isNaN(dataToSend.price)) {
              setMensagem("O preço não é um número válido.");
              return; 
@@ -61,13 +55,9 @@ function CadastrarItens() {
 
             if (res.status === 200) {
                 setMensagem("Item cadastrado com sucesso!");
-                // 4. CHAMADA PARA LIMPAR O FORMULÁRIO APÓS O SUCESSO
                 limparFormulario(); 
             }
 
-            // O redirecionamento após 2 segundos (opcional) ou remoção
-            // para permitir que a mensagem de sucesso seja vista.
-            // Se você quer redirecionar *imediatamente*, mantenha assim:
             navigate('/HomePage'); 
 
         } catch (error) {
@@ -87,8 +77,8 @@ function CadastrarItens() {
                         type="text" 
                         placeholder="Ex: Calculadora Mágica" 
                         required 
-                        value={formData.name} // Valor controlado
-                        onChange={handleChange} // Handler de mudança
+                        value={formData.name} 
+                        onChange={handleChange} 
                     />
                 </div>
 
@@ -100,8 +90,8 @@ function CadastrarItens() {
                         step="0.01" 
                         placeholder="Ex: 99.90" 
                         required 
-                        value={formData.price} // Valor controlado
-                        onChange={handleChange} // Handler de mudança
+                        value={formData.price} 
+                        onChange={handleChange} 
                     />
                 </div>
 
@@ -112,8 +102,8 @@ function CadastrarItens() {
                         type="text" 
                         placeholder="https://..." 
                         required 
-                        value={formData.imageUrl} // Valor controlado
-                        onChange={handleChange} // Handler de mudança
+                        value={formData.imageUrl} 
+                        onChange={handleChange} 
                     />
                 </div>
 
@@ -123,8 +113,8 @@ function CadastrarItens() {
                         name="description" 
                         placeholder="Digite uma breve descrição..." 
                         required
-                        value={formData.description} // Valor controlado
-                        onChange={handleChange} // Handler de mudança
+                        value={formData.description} 
+                        onChange={handleChange} 
                     ></textarea>
                 </div>
 

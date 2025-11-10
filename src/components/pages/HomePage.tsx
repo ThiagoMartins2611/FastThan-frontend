@@ -63,14 +63,14 @@ function HomePage() {
         setItems((prevItems) => prevItems.filter((item) => item._id !== itemId));
         setActivePopUp(false);
         setItemParaApagar(null);
-        setMensagem("Item apagado com sucesso!");
+        setMensagem ( "Item apagado com sucesso!" );
         setError(false);
       } else {
-        setMensagem("Erro ao apagar o item. Tente novamente.");
+        setMensagem ( "Erro ao apagar o item. Tente novamente." );
         setError(true);
       }
     } catch (error) {
-      setMensagem("Item não foi apagado. Ocorreu um erro inesperado.");
+      setMensagem ( "Item não foi apagado. Ocorreu um erro inesperado." );
       setError(true);
     }
   }
@@ -95,11 +95,11 @@ function HomePage() {
         setItems((prev) => prev.map((i) => (i._id === itemParaEditar._id ? itemParaEditar : i)));
         setActiveEdit(false);
         setItemParaEditar(null);
-        setMensagem("Item atualizado com sucesso!");
+        setMensagem ( "Item atualizado com sucesso!" );
         setError(false);
       }
     } catch (error) {
-      setMensagem("Erro ao editar item. Tente novamente.");
+      setMensagem ( "Erro ao editar item. Tente novamente." );
       setError(true);
     }
   }
@@ -120,7 +120,7 @@ function HomePage() {
       }
 
     } catch (error) {
-      setMensagem("Erro ao se comunicar com o servidor");
+      setMensagem ( "Erro ao se comunicar com o servidor" );
       setError(true);
     }
   }
@@ -139,11 +139,11 @@ function HomePage() {
     async function puxarItens() {
       try {
         const res = await api.get("/public/ShowItems");
-        setMensagem("Itens carregados com sucesso!");
+        setMensagem ( "Itens carregados com sucesso!" );
         setItems(res.data);
         setError(false);
       } catch (error) {
-        setMensagem("Erro ao carregar os itens.");
+        setMensagem ( "Erro ao carregar os itens." );
         setError(true);
       }
     }
@@ -151,7 +151,6 @@ function HomePage() {
     puxarItens();
   }, []);
 
-  // ⬇ Popup desaparece sozinho ⬇
   useEffect(() => {
     if (!mensagem) return;
     const timer = setTimeout(() => {

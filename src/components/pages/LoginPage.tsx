@@ -24,7 +24,7 @@ function LoginPage(){
             }
         } catch (error) {
 
-            const msg = "Erro ao fazer login. Verifique suas credenciais."
+            const msg = ( "Erro ao fazer login. Verifique suas credenciais." )
             
             setMensagem(msg)
             
@@ -32,19 +32,19 @@ function LoginPage(){
     }
     
     return(
-        // Classe principal para o container de tela cheia e centralização
+       
         <div className="LoginPage"> 
-            {/* Classe para o cartão de login */}
+           
             <div className="login-container">
                 <h1>Login</h1>
-                {/* Classe para o formulário */}
+              
                 <form className="login-form" onSubmit={logar}>
-                    {/* Pode adicionar um placeholder para melhorar a UX */}
+                  
                     <input name="email" type="text" placeholder="E-mail" required />
                     <input name="senha" type="password" placeholder="Sua Senha" required />
                     <button type="submit">Entrar</button> 
                     {
-                        // Use um parágrafo ou div com uma classe específica para a mensagem
+                       
                         mensagem && <p className="mensagem-erro">{mensagem}</p>
                     }
                 </form>

@@ -3,15 +3,16 @@ import SiteHeader from "../siteDivision/SiteHeader"
 import CadastrarItens from "../tipos de cards/CadastrarItens"
 
 
-function CadastrarItensPage(){
 
-    return(
+ function CadastrarItensPagina() {
+
+
+    return (
         <>
-            <SiteHeader/>
-            <CadastrarItens/>
-            <SiteFooter/>
+            <SiteHeader />
+            <CadastrarItens />
+            <SiteFooter />
         </>
     )
 }
-
-export default CadastrarItensPage
+export default CadastrarItensPagina

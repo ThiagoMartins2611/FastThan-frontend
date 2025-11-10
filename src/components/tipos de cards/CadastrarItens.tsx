@@ -41,7 +41,7 @@ function CadastrarItens() {
         };
 
         if (isNaN(dataToSend.price)) {
-             setMensagem("O preço não é um número válido.");
+             setMensagem ( "O preço não é um número válido." );
              return; 
         }
 
@@ -54,7 +54,7 @@ function CadastrarItens() {
             console.log(res);
 
             if (res.status === 200) {
-                setMensagem("Item cadastrado com sucesso!");
+                setMensagem ( "Item cadastrado com sucesso!" );
                 limparFormulario(); 
             }
 
@@ -62,7 +62,7 @@ function CadastrarItens() {
 
         } catch (error) {
             console.error(error);
-            setMensagem("Erro ao cadastrar item. Verifique os dados e tente novamente.");
+            setMensagem ( "Erro ao cadastrar item. Verifique os dados e tente novamente." );
         }
     }
 

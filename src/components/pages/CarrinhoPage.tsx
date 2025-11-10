@@ -3,6 +3,7 @@ import api from "../../api/api"
 import SiteHeader from "../siteDivision/SiteHeader";
 import SiteFooter from "../siteDivision/SiteFooter";
 import '../../cssComponents/pages/CarrinhoPage.css'
+import { jwtDecode } from "jwt-decode";
 
 interface Item {
   _id: string;
@@ -14,11 +15,22 @@ interface Item {
   quantity: number;
 }
 
-
+interface Carrinho{
+    userId:string;
+    items: Item[];
+    dataAtualizacao: Date | null;
+    total:number;
+}
 
 function CarrinhoPage(){
 
-    const [carrinho, setCarrinho] = useState<Item[]>([]);
+    const [carrinho, setCarrinho] = useState<Carrinho>({
+        userId: "",
+        items: [],
+        dataAtualizacao: null,
+        total: 0
+    });
+
 
     useEffect(()=>{
 
@@ -35,6 +47,16 @@ function CarrinhoPage(){
         buscarItensDoCarrinho()
 
     }, [])
+
+    async function removeItemsOfCart(itemId:string) {
+        api.post("/private/removeItemofCart", {itemId});
+        
+    }
+
+   
+
+
+    
     
     return(
         <>
@@ -49,12 +71,13 @@ function CarrinhoPage(){
                 </div>
 
                 <div className="ItensCarrinho">
-                    {carrinho.map((item) => (
+                    {(carrinho.items).map((item) => (
                         <div key={item._id} className="item-card">
                             <img src={item.imageUrl} alt={item.name} className="item-image" />
                             <h2>{item.name}</h2>
                             <h1>R${item.price}</h1>
                             <h3>Quantidade: {item.quantity}</h3>
+                            <h3 onClick={()=>{removeItemsOfCart(item._id)}}>-</h3>
                         </div>
                     ))
                     }

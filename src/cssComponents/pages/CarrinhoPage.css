@@ -1,26 +1,45 @@
-
+/* =================================== */
+/* Variáveis de Cores (ROOT) - Repetição para fins de auto-suficiência */
+/* Se este bloco for redundante, ignore-o e use apenas o CSS abaixo dele */
+/*
+:root {
+    --cor-primaria:#46748F; 
+    --cor-secundaria:#032345; 
+    --cor-branco:#ebeff5; 
+    --cor-fundo-branco:#FFFFFF;
+    --cor-hover:#c3d3e3;
+    --cor-texto-principal:#333333;     
+    --cor-fundo-claro:#FAFAFA; 
+    --cor-borda:#DDDDDD; 
+    --cor-alerta:#CC0000;
+    --fonte-principal:'Arial', sans-serif;
+    --peso-negrito:700;
+    --peso-medio:500;
+    --sombra-padrao:0 2px 5px rgba(0, 0, 0, 0.08);
+}
+*/
+/* =================================== */
 
 #carrinhoPage {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Garante que a página ocupe toda a altura da viewport */
+    min-height: 100vh;
 }
 
 #Carrinho {
     width: 100%;
-    /* Ocupa o espaço restante entre o header e o footer */
     flex-grow: 1; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza o conteúdo (título e itens) */
-    padding: 20px;
+    align-items: center; 
+    padding: 20px 20px 50px 20px;
     background-color: var(--cor-fundo-claro);
     font-family: var(--fonte-principal);
 }
 
 #titulo {
     width: 100%;
-    max-width: 1200px; /* Limita a largura do título, se necessário */
+    max-width: 1200px;
     padding: 10px 0;
     margin-bottom: 20px;
 }
@@ -34,111 +53,458 @@
     margin: 0;
 }
 
-.ItensCarrinho {
+/* ----------------------------------- */
+/* Lista de Itens do Carrinho (Foco Principal) */
+/* ----------------------------------- */
+
+.lista-itens-carrinho {
     width: 100%;
-    max-width: 1200px; /* Limita a largura máxima do container de itens */
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px; 
-    padding: 10px 0;
-    justify-content: center; /* Centraliza os cartões dentro do container */
-}
-
-
-/* ----------------------------------- */
-/* Estilos dos Cartões de Item (Reutilizados e Adaptados) */
-/* ----------------------------------- */
-
-.item-card {
-    background-color: var(--cor-fundo-branco);
-    border: 1px solid var(--cor-borda);
-    box-shadow: var(--sombra-padrao);
-    /* Ajuste para ter 3 ou 4 itens por linha. 
-       Ajustei para 22% para caberem 4 com a margem de 30px */
-    width: 22%; 
-    min-width: 200px; /* Garante um tamanho mínimo em telas menores */
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    max-width: 1200px; 
     display: flex;
     flex-direction: column;
-    /* Pode ser removido se não houver botões no carrinho, 
-       mas mantido para layout de espaço entre itens */
-    justify-content: space-between; 
-    position: relative; 
+    gap: 15px; 
+    padding: 10px 0;
+    margin-bottom: 30px;
 }
 
-.item-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+.item-carrinho-linha {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    background-color: var(--cor-fundo-branco);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    box-shadow: var(--sombra-padrao);
+    padding: 20px;
+    position: relative;
 }
 
-.item-image {
-    width: 100%;
-    height: 150px;
+.item-imagem-carrinho {
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     border-radius: 6px;
-    margin-bottom: 10px;
+    flex-shrink: 0;
+    margin-right: 20px;
 }
 
-.item-card h3{
-    color: var(--cor-texto-principal);
+.item-info-carrinho {
+    flex-grow: 1; 
+    text-align: left;
+    min-width: 200px;
+}
+
+.item-info-carrinho h2 {
     font-size: 1.2em;
-    margin: 10px 0 5px 0;
-    font-weight: var(--peso-negrito);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: end;
-}
-
-.item-card h2 {
     color: var(--cor-texto-principal);
-    font-size: 1.2em;
-    margin: 10px 0 5px 0;
+    margin: 0 0 3px 0;
     font-weight: var(--peso-negrito);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
-.item-card h1 {
-    /* Estilo para o Preço */
+.descricao-carrinho {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0;
+}
+
+/* Layout das Colunas de Dados (Preço, Qtd, Subtotal) */
+.item-preco-unitario, 
+.item-quantidade, 
+.item-subtotal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha o texto à esquerda ou centro conforme preferir */
+    text-align: left;
+    width: 150px; 
+    flex-shrink: 0;
+    padding: 0 10px;
+}
+
+/* Ajustes finos para alinhamento horizontal */
+.item-preco-unitario { margin-left: auto; } /* Empurra para a direita no desktop */
+.item-quantidade { width: 120px; }
+.item-subtotal { width: 150px; text-align: right; }
+
+.label-preco, .label-quantidade, .label-subtotal {
+    font-size: 0.85em;
+    color: #999;
+    margin-bottom: 5px;
+    font-weight: var(--peso-medio);
+}
+
+.preco-carrinho, .subtotal-carrinho {
     color: var(--cor-primaria);
-    font-size: 1.8em;
+    font-size: 1.2em;
     font-weight: var(--peso-negrito);
-    margin: 10px 0 0 0;
+    margin: 0;
+}
+
+/* Controle de Quantidade - Alinhamento com a imagem */
+.item-quantidade {
+    display: flex;
+    justify-content: center; /* Centraliza a caixa de quantidade */
+    align-items: center;
+}
+
+.quantidade-container-carrinho {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 0; /* Alinhar verticalmente */
+}
+
+.botao-qtd {
+    background-color: var(--cor-fundo-claro);
+    color: var(--cor-texto-principal);
+    border: none;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: var(--peso-negrito);
+    transition: background-color 0.2s;
+}
+
+.botao-qtd:hover {
+    background-color: var(--cor-hover);
+}
+
+.quantidade {
+    padding: 5px 10px;
+    background-color: var(--cor-fundo-branco);
+    font-weight: var(--peso-medio);
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Botão de Remover */
+.item-acoes-carrinho {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    flex-shrink: 0;
+}
+
+.remover-item-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #AAAAAA; /* Cor mais suave para o X */
+    font-size: 1.2em;
+    padding: 5px;
+    line-height: 1; /* Alinhamento vertical */
+    transition: color 0.2s;
+}
+
+.remover-item-btn:hover {
+    color: var(--cor-alerta);
+}
+
+/* ----------------------------------- */
+/* Resumo da Compra (Total e Checkout) */
+/* ----------------------------------- */
+
+.resumo-compra-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    padding-top: 20px;
+    border-top: 2px solid var(--cor-borda);
+}
+
+.total-carrinho {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.total-label {
+    color: var(--cor-secundaria);
+    font-weight: var(--peso-medio);
+    font-size: 1.8em;
+}
+
+.total-valor {
+    color: var(--cor-primaria);
+    font-weight: var(--peso-negrito);
+    font-size: 2.2em;
+}
+
+.finalizar-compra-btn {
+    padding: 15px 40px;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-fundo-branco);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: var(--peso-negrito);
+    transition: background-color 0.3s;
+}
+
+.finalizar-compra-btn:hover {
+    background-color: var(--cor-primaria);
 }
 
 /* ----------------------------------- */
 /* Responsividade */
 /* ----------------------------------- */
 
-@media (max-width: 1200px) {
-    /* 3 itens por linha */
-    .item-card {
-        width: 30%;
+@media (max-width: 900px) {
+    /* Diminui o espaçamento e os tamanhos na visualização desktop menor */
+    .item-preco-unitario, 
+    .item-subtotal {
+        width: 120px;
     }
 }
 
-@media (max-width: 850px) {
-    /* 2 itens por linha */
-    .item-card {
-        width: 45%;
+@media (max-width: 768px) {
+    .item-carrinho-linha {
+        flex-wrap: wrap;
+    }
+
+    /* Coloca os dados de preço/quantidade/subtotal em uma nova linha */
+    .item-preco-unitario {
+        margin-left: 0; /* Remove o empurrão automático */
+        order: 3; /* Força a ir para baixo */
+        width: 33%;
+        text-align: left;
+    }
+    .item-quantidade {
+        order: 4;
+        width: 33%;
+        text-align: center;
+    }
+    .item-subtotal {
+        order: 5;
+        width: 33%;
+        text-align: right;
+    }
+
+    .item-info-carrinho {
+        flex-basis: calc(100% - 100px); 
     }
 }
 
-@media (max-width: 550px) {
-    /* 1 item por linha */
-    .item-card {
-        width: 90%;
-        margin: 0 auto; /* Centraliza o card individualmente */
-    }
-    
+@media (max-width: 480px) {
     #titulo h1 {
         font-size: 2em;
         text-align: center;
     }
+    
+    .item-imagem-carrinho {
+        margin-right: 10px;
+    }
+
+    .item-carrinho-linha {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 70px; /* Espaço para o subtotal e remover */
+    }
+
+    .item-info-carrinho {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* Estiliza os dados como linha 'chave: valor' na parte inferior */
+    .item-preco-unitario, 
+    .item-quantidade, 
+    .item-subtotal {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        padding: 8px 0;
+        border-top: 1px dashed var(--cor-borda);
+    }
+    
+    .quantidade-container-carrinho {
+        margin-top: 0;
+    }
+
+    .item-acoes-carrinho {
+        position: absolute;
+        bottom: 20px; 
+        right: 15px;
+    }
+    
+    .total-carrinho {
+        font-size: 1.3em;
+    }
+    
+    .total-valor {
+        font-size: 1.8em;
+    }
+    
+    .finalizar-compra-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.1em;
+    }
+}
+
+/* =================================== */
+/* Responsividade - CORREÇÃO DE BUG */
+/* =================================== */
+
+/* Para telas menores que 900px, ajusta a largura das colunas de preço/subtotal */
+@media (max-width: 900px) {
+    .item-preco-unitario, 
+    .item-subtotal {
+        width: 100px; /* Reduz ligeiramente a largura */
+    }
+    .item-quantidade {
+        width: 100px;
+    }
+}
+
+/* Para telas menores que 768px (Tablet/Mobile Grande): Quebra em duas linhas principais */
+@media (max-width: 768px) {
+    .item-carrinho-linha {
+        flex-wrap: wrap;
+        /* Garante que o item ocupe a linha inteira */
+        justify-content: space-between; 
+        padding-bottom: 70px; /* Espaço extra para os botões no mobile */
+    }
+
+    /* A imagem e as informações (nome/descrição) ficam na primeira linha */
+    .item-imagem-carrinho {
+        margin-right: 15px;
+    }
+
+    .item-info-carrinho {
+        /* Permite que ocupe o espaço restante ao lado da imagem */
+        flex-basis: calc(100% - 110px); 
+        min-width: 0; /* Permite encolher */
+    }
+
+    /* Colunas de Preço/Quantidade/Subtotal vão para a segunda linha */
+    .item-preco-unitario {
+        margin-left: 0; /* Remove o empurrão para a direita */
+        order: 3; /* Força a ir para baixo */
+        width: 30%;
+        text-align: left;
+    }
+    .item-quantidade {
+        order: 4;
+        width: 40%; /* Dá mais espaço para os botões de QTD */
+        align-items: center;
+        text-align: center;
+    }
+    .item-subtotal {
+        order: 5;
+        width: 30%;
+        text-align: right;
+    }
+    
+    .item-acoes-carrinho {
+        /* Fixa o botão remover no canto superior para não interferir */
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+}
+
+/* Para telas muito pequenas (Mobile Pequeno): Empilha tudo */
+@media (max-width: 480px) {
+    #titulo h1 {
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .item-carrinho-linha {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 60px; /* Ajuste o padding inferior */
+    }
+
+    .item-imagem-carrinho {
+        margin-bottom: 10px;
+    }
+
+    .item-info-carrinho {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* Estiliza os dados como linha 'chave: valor' na parte inferior */
+    .item-preco-unitario, 
+    .item-quantidade, 
+    .item-subtotal {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        padding: 8px 0;
+        border-top: 1px dashed var(--cor-borda);
+        margin: 0;
+    }
+    
+    /* Garante que o Subtotal (o mais importante) esteja sempre visível */
+    .item-subtotal {
+        border-bottom: 1px solid var(--cor-borda); /* Adiciona uma linha de separação */
+        padding-bottom: 15px;
+    }
+    
+    .item-acoes-carrinho {
+        /* Move o remover para o canto inferior direito para telas muito pequenas */
+        bottom: 15px; 
+        right: 15px;
+        top: auto; /* Desativa a regra do topo */
+    }
+    
+    .resumo-compra-container {
+        padding-top: 15px;
+    }
+    
+    .total-carrinho {
+        font-size: 1.3em;
+    }
+    
+    .total-valor {
+        font-size: 1.8em;
+    }
+    
+    .finalizar-compra-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.1em;
+    }
+}
+
+.ordenar-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 90%;
+  max-width: 800px;
+  margin: 10px auto 25px auto;
+  gap: 10px;
+}
+
+.ordenar-container label {
+  font-weight: bold;
+  color: var(--cor-secundaria);
+}
+
+.ordenar-container select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--cor-borda);
+  background-color: var(--cor-fundo-branco);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.ordenar-container select:hover {
+  border-color: var(--cor-primaria);
 }

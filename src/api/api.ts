@@ -14,10 +14,7 @@ const api = axios.create ( {
 api.interceptors.request.use ( ( config ) => {
 
     const token = localStorage.getItem ( "token" )
-    if(!token && !(window.location.href=="/HomePage")){
-        window.location.href = "/login"
-    }
-
+ 
     if ( token )
 
         config.headers.Authorization = `Bearer ${token}`
@@ -28,27 +25,25 @@ api.interceptors.request.use ( ( config ) => {
 
 //Interceptor de resposta:quando o backend retornar 401 redireciona para o login
 
-api.interceptors.response.use (
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const status = error?.response?.status;
 
-    ( response ) => response,
-    ( error ) => {
-
-        const status = error?.response?.status
-
-        if ( status === 401 && 
-            (! ( error?.response?.config?.url.endsWith ( "/login" ) 
-            || ! ( error?.response?.config?.url.endsWith ( "/HomePage" ) )
-        
-        )) ) {
-
-            localStorage.removeItem ( "token" );
-            window.location.href = "/login";
-        }
-
-        return Promise.reject ( error )
-
+    // Se o token expirou ou é inválido, e a rota não é de login
+    if (
+      status === 401 &&
+      !error?.config?.url?.endsWith("/login") // evita loop no login
+    ) {
+      console.warn("Token expirado ou inválido, limpando login...");
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+      localStorage.clear();
     }
-    
-)
+
+    return Promise.reject(error);
+  }
+);
+
 
 export default api;

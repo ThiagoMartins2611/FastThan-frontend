@@ -109,3 +109,26 @@
     border: 1px solid var(--cor-alerta);
 }
 
+/* Correção dos Seletores */
+.cadastroCard input[type="text"],
+.cadastroCard input[type="number"],
+.cadastroCard input[type="url"], /* Adicionado, pois 'imageUrl' é um URL */
+.cadastroCard textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: var(--cor-texto-principal);
+    background-color: var(--cor-fundo-claro);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Adicionei box-shadow na transição */
+}
+
+/* Foco dos Inputs e Textarea */
+.cadastroCard input:focus,
+.cadastroCard textarea:focus {
+    border-color: var(--cor-primaria);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(70, 116, 143, 0.3); /* Aumentei um pouco a opacidade da sombra no foco */
+}

@@ -49,7 +49,21 @@ function CarrinhoPage(){
     }, [])
 
     async function removeItemsOfCart(itemId:string) {
-        api.post("/private/removeItemofCart", {itemId});
+        
+        try {
+            const res = await api.post("/private/removeItemofCart", {itemId});
+            
+            console.log(res.data.mensagem)
+            const novoCarrinho = carrinho;
+            const itemAserRemovido = novoCarrinho.items.findIndex(i=>i._id===itemId)
+            
+            if(itemAserRemovido !== 1){
+                novoCarrinho.items.splice(itemAserRemovido, 1)
+                setCarrinho(novoCarrinho)
+            }
+        } catch (error) {
+            console.log(error)
+        }
         
     }
 

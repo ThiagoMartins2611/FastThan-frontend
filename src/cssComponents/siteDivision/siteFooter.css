@@ -13,7 +13,7 @@ footer {
     display:flex;
     flex-wrap:wrap;
     justify-content:space-between; 
-    width:100vw;
+    width: 100%;
     margin:0 auto;
     text-align:left;
     gap:30px;
@@ -32,7 +32,7 @@ address,
 }
 
 address {
-
+    
     font-size:0.95rem;
     line-height:1.6;
 
@@ -98,4 +98,8 @@ footer a:hover {
     color:var(--cor-hover); 
     opacity:1;
 
+}
+
+.footer-section{
+   margin: 1%;
 }

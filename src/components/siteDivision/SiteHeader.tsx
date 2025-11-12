@@ -82,7 +82,7 @@ function SiteHeader () {
                 (
                   <>
                     <li> <a href = "#home"> Usuarios </a> </li>
-                    <li> <a href = "#about"> Carrinhos </a> </li>
+                    <li> <a href = "/Carrinhos"> Carrinhos </a> </li>
                     <li> <a href = "/cadastrarItem"> Cadastrar Itens </a> </li>
                   </>
                 ): (

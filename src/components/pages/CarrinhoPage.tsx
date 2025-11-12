@@ -17,6 +17,7 @@ interface Item {
 
 interface Carrinho{
     userId:string;
+    userName: string;
     items: Item[];
     dataAtualizacao: Date | null;
     total:number;
@@ -32,6 +33,7 @@ function CarrinhoPage(){
 
     const [carrinho, setCarrinho] = useState<Carrinho>({
         userId: "",
+        userName: "",
         items: [],
         dataAtualizacao: null,
         total: 0
@@ -148,6 +150,7 @@ function CarrinhoPage(){
             // Limpa o estado local
             setCarrinho({
                 userId: "",
+                userName: "",
                 items: [],
                 dataAtualizacao: null,
                 total: 0,

@@ -259,6 +259,7 @@ function CarrinhoPage(){
                     <span className="total-valor">R$ {carrinho.total.toFixed(2)}</span>
                 </div>
 
+
                 <button className="finalizar-compra-btn">Finalizar Compra</button>
 
                 <button

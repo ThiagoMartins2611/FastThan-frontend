@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../../api/api";
 import SiteHeader from "../siteDivision/SiteHeader";
 import SiteFooter from "../siteDivision/SiteFooter";
+import { useNavigate } from "react-router-dom";
 
 interface Item {
   _id: string;
@@ -24,8 +25,13 @@ function Carrinhos() {
   const [carrinhos, setCarrinhos] = useState<Carrinho[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
+
     async function buscarCarrinhos() {
+      
+
       try {
         const res = await api.get("/private/ShowCart");
         if (Array.isArray(res.data.carts)) {
@@ -34,7 +40,7 @@ function Carrinhos() {
           console.warn("Resposta inesperada da API:", res.data);
         }
       } catch (error) {
-        console.error("Erro ao buscar carrinhos:", error);
+        navigate("/HomePage");
       } finally {
         setLoading(false);
       }

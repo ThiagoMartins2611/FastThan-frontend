@@ -151,6 +151,8 @@ function HomePage() {
     puxarItens();
   }, []);
 
+
+
   useEffect(() => {
     if (!mensagem) return;
     const timer = setTimeout(() => {

@@ -7,7 +7,7 @@ import LoginPage from './components/pages/LoginPage'
 import CadastrarItensPage from './components/pages/CadastrarItensPage'
 import CarrinhoPage from './components/pages/CarrinhoPage'
 import Carrinhos from './components/pages/CarrinhosADM'
-import { useNavigate } from 'react-router-dom'
+import Redirecionamento from './components/pages/Redirecionamento'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -15,13 +15,8 @@ createRoot(document.getElementById('root')!).render(
     <Routes>
 
 
-        <Route path='/' element={<>{()=>{
-          const navigate = useNavigate()
-          useEffect(()=>{
-            navigate("/HomePage");
-          }, [])
+        <Route path='/' element={<Redirecionamento/>}/>
 
-        }}</>}/>
         <Route path='/HomePage' element={<HomePage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/cadastrarItem' element={<CadastrarItensPage/>}/>

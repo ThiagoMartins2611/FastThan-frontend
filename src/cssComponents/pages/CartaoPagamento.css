@@ -1,0 +1,117 @@
+/* Variáveis já estão definidas no :root, mas são repetidas aqui para contexto,
+ * embora no uso real do arquivo .css elas não precisem ser definidas novamente se já estiverem em um arquivo global.
+ */
+/*
+:root {
+    --cor-primaria:#46748F;
+    --cor-secundaria:#032345;
+    --cor-branco:#ebeff5;
+    --cor-fundo-branco:#FFFFFF;
+    --cor-hover:#c3d3e3;
+    --cor-texto-principal:#333333;
+    --cor-fundo-claro:#FAFAFA;
+    --cor-borda:#DDDDDD;
+    --cor-alerta:#CC0000;
+
+    --fonte-principal:'Arial', sans-serif;
+    --peso-negrito:700;
+    --peso-medio:500;
+    --sombra-padrao:0 2px 5px rgba(0, 0, 0, 0.08);
+}
+*/
+
+.CartaoPagamento {
+    /* Container principal */
+    max-width: 450px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--cor-fundo-branco);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    box-shadow: var(--sombra-padrao);
+    font-family: var(--fonte-principal);
+    color: var(--cor-texto-principal);
+}
+
+.CartaoPagamento > div:first-child {
+    /* Div que envolve o formulário (campos do cartão) */
+    margin-bottom: 25px;
+}
+
+.CartaoPagamento label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: var(--peso-medio);
+    color: var(--cor-texto-principal);
+}
+
+/* Estilizando os campos do Stripe Elements */
+.CartaoPagamento .__PrivateStripeElement {
+    padding: 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    background-color: var(--cor-fundo-claro);
+    box-sizing: border-box;
+    /* Estilos para focar e para o container que envolve o Iframe do Stripe */
+}
+
+/* Container do número do cartão (ajuste de margem inferior) */
+.CartaoPagamento > div > div:first-child {
+    margin-bottom: 20px;
+}
+
+/* Container de Validade e CVC (para layout lado a lado) */
+.CartaoPagamento > div > div:nth-child(2) {
+    display: flex;
+    gap: 15px; /* Espaço entre os campos */
+}
+
+.CartaoPagamento > div > div:nth-child(2) > div {
+    flex: 1; /* Faz com que Validade e CVC ocupem o mesmo espaço */
+}
+
+/* Botão de Pagar */
+.CartaoPagamento button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: var(--peso-negrito);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.CartaoPagamento button:hover:not(:disabled) {
+    background-color: var(--cor-secundaria); /* Cor mais escura no hover */
+}
+
+.CartaoPagamento button:disabled {
+    background-color: var(--cor-hover); /* Cor para estado desabilitado */
+    cursor: not-allowed;
+}
+
+/* Mensagem de status (sucesso/erro) */
+.CartaoPagamento p {
+    margin-top: 15px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.CartaoPagamento p:not([style*="Erro"]) {
+    /* Estilo para sucesso - Pagamento aprovado! */
+    background-color: #e6ffe6; /* Verde claro */
+    color: #008000; /* Verde escuro */
+}
+
+.CartaoPagamento p[style*="Erro"] {
+    /* Estilo para erro - Mensagem de erro do Stripe */
+    background-color: #ffe6e6; /* Vermelho claro */
+    color: var(--cor-alerta);
+}

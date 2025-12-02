@@ -260,7 +260,9 @@ function CarrinhoPage(){
                 </div>
 
 
-                <button className="finalizar-compra-btn">Finalizar Compra</button>
+                <button className="finalizar-compra-btn" onClick={()=>{
+                    navigate("/finalizar-compra")
+                }}>Finalizar Compra</button>
 
                 <button
                   className="apagar-carrinho-btn"

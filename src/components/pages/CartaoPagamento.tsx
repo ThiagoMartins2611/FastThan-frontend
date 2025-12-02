@@ -2,6 +2,7 @@ import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcEl
 import { useState, useEffect } from "react";
 import api from "../../api/api";
 import "../../cssComponents/pages/CartaoPagamento.css";
+import { useNavigate } from "react-router-dom";
 
 // Estilo interno dos inputs do Stripe (para combinar com seu CSS)
 const CARD_OPTIONS = {
@@ -23,6 +24,8 @@ const CARD_OPTIONS = {
 };
 
 export default function CartaoPagamento() {
+  const navigate = useNavigate();
+
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
@@ -59,8 +62,10 @@ export default function CartaoPagamento() {
 
     try {
       // 1. Criar Intent no Backend
-      const { data } = await api.post("/criar-pagamento-cartao", { total }); // Enviei o total, caso seu back precise confirmar
+      const { data } = await api.post("/private/criar-pagamento-cartao", { total }); // Enviei o total, caso seu back precise confirmar
       const { clientSecret } = data;
+
+      
 
       // 2. Confirmar no Stripe
       const result = await stripe.confirmCardPayment(clientSecret, {
@@ -71,6 +76,7 @@ export default function CartaoPagamento() {
             // name: 'Nome do Cliente'
           }
         },
+
       });
 
       if (result.error) {
@@ -79,7 +85,12 @@ export default function CartaoPagamento() {
         setStatus({ type: "success", message: "Pagamento aprovado com sucesso!" });
         // Aqui você pode redirecionar o usuário ou limpar o carrinho
       }
+
+      navigate("/HomePage");
+
     } catch (err) {
+      const { data } = await api.post("/private/criar-pagamento-cartao", { total });
+      console.log(data)
       setStatus({ type: "error", message: "Erro de conexão ao processar pagamento." });
     }
 

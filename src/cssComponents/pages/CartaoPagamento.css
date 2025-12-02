@@ -1,117 +1,180 @@
-/* Variáveis já estão definidas no :root, mas são repetidas aqui para contexto,
- * embora no uso real do arquivo .css elas não precisem ser definidas novamente se já estiverem em um arquivo global.
- */
-/*
 :root {
-    --cor-primaria:#46748F;
-    --cor-secundaria:#032345;
-    --cor-branco:#ebeff5;
-    --cor-fundo-branco:#FFFFFF;
-    --cor-hover:#c3d3e3;
-    --cor-texto-principal:#333333;
-    --cor-fundo-claro:#FAFAFA;
-    --cor-borda:#DDDDDD;
-    --cor-alerta:#CC0000;
-
-    --fonte-principal:'Arial', sans-serif;
-    --peso-negrito:700;
-    --peso-medio:500;
-    --sombra-padrao:0 2px 5px rgba(0, 0, 0, 0.08);
+    --cor-primaria: #46748F;
+    --cor-secundaria: #032345;
+    --cor-branco: #ebeff5;
+    --cor-fundo-branco: #FFFFFF;
+    --cor-hover: #c3d3e3;
+    --cor-texto-principal: #333333;
+    --cor-fundo-claro: #FAFAFA;
+    --cor-borda: #DDDDDD;
+    --cor-alerta: #CC0000;
 }
-*/
 
-.CartaoPagamento {
-    /* Container principal */
-    max-width: 450px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: var(--cor-fundo-branco);
-    border: 1px solid var(--cor-borda);
-    border-radius: 8px;
-    box-shadow: var(--sombra-padrao);
+:root {
+    --fonte-principal: 'Arial', sans-serif;
+    --peso-negrito: 700;
+    --peso-medio: 500;
+    --sombra-padrao: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* Container geral */
+.payment-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: var(--cor-fundo-claro); /* Usando variável */
+    padding: 20px;
     font-family: var(--fonte-principal);
-    color: var(--cor-texto-principal);
 }
 
-.CartaoPagamento > div:first-child {
-    /* Div que envolve o formulário (campos do cartão) */
-    margin-bottom: 25px;
-}
-
-.CartaoPagamento label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    font-weight: var(--peso-medio);
-    color: var(--cor-texto-principal);
-}
-
-/* Estilizando os campos do Stripe Elements */
-.CartaoPagamento .__PrivateStripeElement {
-    padding: 12px;
+/* O "Cartão" visualmente falando */
+.payment-card {
+    background: var(--cor-fundo-branco);
+    width: 100%;
+    max-width: 480px;
+    border-radius: 8px; /* Ajustado levemente para combinar com Arial */
+    box-shadow: var(--sombra-padrao); /* Usando variável */
+    padding: 40px;
     border: 1px solid var(--cor-borda);
-    border-radius: 4px;
-    background-color: var(--cor-fundo-claro);
-    box-sizing: border-box;
-    /* Estilos para focar e para o container que envolve o Iframe do Stripe */
 }
 
-/* Container do número do cartão (ajuste de margem inferior) */
-.CartaoPagamento > div > div:first-child {
+/* Header com o Total */
+.payment-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--cor-borda);
+    padding-bottom: 20px;
+}
+
+.payment-header h3 {
+    color: var(--cor-texto-principal);
+    margin-top: 0;
+    font-size: 1.1rem;
+    font-weight: var(--peso-medio);
+}
+
+.payment-total span {
+    display: block;
+    color: var(--cor-primaria); /* Destaque sutil com a primária */
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.payment-total h2 {
+    color: var(--cor-secundaria); /* Cor forte para o dinheiro */
+    font-size: 2rem;
+    margin: 0;
+    font-weight: var(--peso-negrito);
+}
+
+/* Inputs e Labels */
+.input-group {
     margin-bottom: 20px;
 }
 
-/* Container de Validade e CVC (para layout lado a lado) */
-.CartaoPagamento > div > div:nth-child(2) {
-    display: flex;
-    gap: 15px; /* Espaço entre os campos */
+.input-group label {
+    display: block;
+    color: var(--cor-texto-principal);
+    font-size: 0.9rem;
+    font-weight: var(--peso-medio);
+    margin-bottom: 8px;
 }
 
-.CartaoPagamento > div > div:nth-child(2) > div {
-    flex: 1; /* Faz com que Validade e CVC ocupem o mesmo espaço */
+/* Wrapper para simular o input text padrão */
+.stripe-input-wrapper {
+    padding: 12px 14px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    background-color: var(--cor-fundo-branco);
+    transition: all 0.2s ease;
+}
+
+/* Efeito de foco usando a cor primária */
+.stripe-input-wrapper:focus-within {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 2px var(--cor-hover); /* Glow suave usando a cor hover */
+}
+
+/* Layout em Grid para Data e CVC */
+.row {
+    display: flex;
+    gap: 20px;
+}
+
+.col {
+    flex: 1;
 }
 
 /* Botão de Pagar */
-.CartaoPagamento button {
+.pay-button {
     width: 100%;
-    padding: 12px;
-    margin-top: 15px;
+    padding: 16px;
     background-color: var(--cor-primaria);
-    color: var(--cor-branco);
+    color: var(--cor-fundo-branco); /* Texto branco */
     border: none;
     border-radius: 4px;
     font-size: 16px;
     font-weight: var(--peso-negrito);
+    font-family: var(--fonte-principal);
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.CartaoPagamento button:hover:not(:disabled) {
-    background-color: var(--cor-secundaria); /* Cor mais escura no hover */
-}
-
-.CartaoPagamento button:disabled {
-    background-color: var(--cor-hover); /* Cor para estado desabilitado */
-    cursor: not-allowed;
-}
-
-/* Mensagem de status (sucesso/erro) */
-.CartaoPagamento p {
+    transition: background-color 0.2s ease;
     margin-top: 15px;
-    padding: 10px;
-    text-align: center;
+}
+
+.pay-button:hover:not(:disabled) {
+    background-color: var(--cor-secundaria); /* Escurece no hover */
+}
+
+.pay-button:disabled {
+    background-color: var(--cor-borda);
+    color: var(--cor-texto-principal);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Mensagens de Status */
+.status-message {
+    padding: 12px;
     border-radius: 4px;
-    font-size: 14px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: var(--peso-medio);
 }
 
-.CartaoPagamento p:not([style*="Erro"]) {
-    /* Estilo para sucesso - Pagamento aprovado! */
-    background-color: #e6ffe6; /* Verde claro */
-    color: #008000; /* Verde escuro */
-}
-
-.CartaoPagamento p[style*="Erro"] {
-    /* Estilo para erro - Mensagem de erro do Stripe */
-    background-color: #ffe6e6; /* Vermelho claro */
+.status-message.error {
+    background-color: #ffebee;
     color: var(--cor-alerta);
+    border: 1px solid var(--cor-alerta);
+}
+
+.status-message.success {
+    background-color: #e8f5e9;
+    color: var(--cor-secundaria);
+    border: 1px solid var(--cor-primaria);
+}
+
+/* Badge de segurança */
+.secure-badge {
+    text-align: center;
+    margin-top: 20px;
+    color: #999;
+    font-size: 0.8rem;
+}
+
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
